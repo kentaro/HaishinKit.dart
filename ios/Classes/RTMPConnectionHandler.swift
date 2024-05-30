@@ -48,7 +48,9 @@ class RTMPConnectionHandler: NSObject, MethodCallHandler {
         var map: [String: Any?] = [:]
         map["type"] = event.type.rawValue
         map["data"] = ASObjectUtil.removeEmpty(event.data)
-        eventSink?(map)
+        DispatchQueue.main.async {
+            eventSink?(map)
+        }
     }
 }
 
